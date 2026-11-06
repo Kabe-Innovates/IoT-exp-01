@@ -1,7 +1,7 @@
 # EXPERIMENT-01-INTERFACING-A-DIGITAL-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:** 27/11/2026
+**DATE:** 17/10/2026
 
 **NAME:** KABELAN G K
 
@@ -101,11 +101,11 @@ With its power-efficient design, built-in LoRaWAN support, and flexible communic
 ```
 #include "main.h"
 
-UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-static void MX_USART1_UART_Init(void);
+static void MX_USART2_UART_Init(void);
 
 int main(void)
 {
@@ -114,22 +114,22 @@ int main(void)
     SystemClock_Config();
 
     MX_GPIO_Init();
-    MX_USART1_UART_Init();
+    MX_USART2_UART_Init();
 
     while (1)
     {
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-        HAL_Delay(4000);
+        HAL_Delay(500);
 
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-        HAL_Delay(4000);
+        HAL_Delay(500);
     }
 }
 ```
 
 ## OUTPUT
 
-<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/7e2d9842-4fed-4608-83f0-e38737f8e7e8" />
+<img width="1917" height="1198" alt="image" src="https://github.com/user-attachments/assets/3364663a-8bb7-471a-bd29-51e15e1146be" />
 
 <img width="1502" height="977" alt="Screenshot 2026-07-27 113008" src="https://github.com/user-attachments/assets/972dd382-805a-427c-8638-a55fbe1a2e7d" />
 <img width="1600" height="900" alt="WhatsApp Image 2026-08-05 at 11 40 40 (1)" src="https://github.com/user-attachments/assets/04fb7af5-af10-4490-8ca3-2233a25da901" />
