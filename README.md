@@ -1,13 +1,13 @@
 # EXPERIMENT-01-INTERFACING-A-DIGITAL-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE: 27.10.2026**
+**DATE:** 27/11/2026
 
-**NAME: KABELAN G K**
+**NAME:** KABELAN G K
 
-**ROLL NO:212224040010**
+**ROLL NO:** 212224110027
 
-**DEPARTMENT: COMPUTER SCIENCE AND ENGINEERING(IoT)**
+**DEPARTMENT:** Computer Science and Engineering (IoT)
 
 ## Aim
 
@@ -101,7 +101,11 @@ With its power-efficient design, built-in LoRaWAN support, and flexible communic
 ```
 #include "main.h"
 
+UART_HandleTypeDef huart1;
+
 void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
+static void MX_USART1_UART_Init(void);
 
 int main(void)
 {
@@ -109,73 +113,29 @@ int main(void)
 
     SystemClock_Config();
 
+    MX_GPIO_Init();
+    MX_USART1_UART_Init();
+
     while (1)
     {
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
-        HAL_Delay(100);
+        HAL_Delay(4000);
 
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
-        HAL_Delay(100);
+        HAL_Delay(4000);
     }
 }
-
-void SystemClock_Config(void)
-{
-    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-
-    __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
-
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_MSI;
-    RCC_OscInitStruct.MSIState = RCC_MSI_ON;
-    RCC_OscInitStruct.MSICalibrationValue = RCC_MSICALIBRATION_DEFAULT;
-    RCC_OscInitStruct.MSIClockRange = RCC_MSIRANGE_6;
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-    {
-        Error_Handler();
-    }
-
-    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK3 |
-                                   RCC_CLOCKTYPE_HCLK |
-                                   RCC_CLOCKTYPE_SYSCLK |
-                                   RCC_CLOCKTYPE_PCLK1 |
-                                   RCC_CLOCKTYPE_PCLK2;
-
-    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_MSI;
-    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-    RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-    RCC_ClkInitStruct.AHBCLK3Divider = RCC_SYSCLK_DIV1;
-
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
-    {
-        Error_Handler();
-    }
-}
-
-void Error_Handler(void)
-{
-    __disable_irq();
-
-    while (1)
-    {
-    }
-}
-
-#ifdef USE_FULL_ASSERT
-
-void assert_failed(uint8_t *file, uint32_t line)
-{
-}
-
-#endif
-
 ```
 
 ## OUTPUT
-<img width="724" height="1600" alt="WhatsApp Image 2026-07-27 at 11 02 15 AM" src="https://github.com/user-attachments/assets/e1b500f8-51a5-4568-8bd1-07a75d7ce277" />
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/7e2d9842-4fed-4608-83f0-e38737f8e7e8" />
+
+<img width="1502" height="977" alt="Screenshot 2026-07-27 113008" src="https://github.com/user-attachments/assets/972dd382-805a-427c-8638-a55fbe1a2e7d" />
+<img width="1600" height="900" alt="WhatsApp Image 2026-08-05 at 11 40 40 (1)" src="https://github.com/user-attachments/assets/04fb7af5-af10-4490-8ca3-2233a25da901" />
+<img width="1600" height="900" alt="WhatsApp Image 2026-08-05 at 11 40 47" src="https://github.com/user-attachments/assets/5a729a85-f4a5-4229-9743-741c54f7633e" />
+
+
 
 
 
